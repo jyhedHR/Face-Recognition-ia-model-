@@ -1,14 +1,19 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
-from detector import detect_emotion_from_webcam
+from detector import detect_emotion_from_image
 import os
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True, origins=["https://trelix-livid.vercel.app"])
 
-@app.route('/api/emotion', methods=['GET'])
+@app.route('/api/emotion', methods=['POST'])
 def get_emotion():
-    result = detect_emotion_from_webcam()
+    data = request.json
+    image_data = data.get('image')  # Get image data from request
+    if not image_data:
+        return jsonify({"error": "No image data received"})
+    
+    result = detect_emotion_from_image(image_data)  # Pass image data to emotion detector
     return jsonify(result)
 
 if __name__ == '__main__':
