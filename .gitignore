@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.env/
+*.env
+face_env/
+*.pkl
