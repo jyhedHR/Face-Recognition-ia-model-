@@ -1,4 +1,10 @@
-Flask
+flask
 flask-cors
 deepface
 opencv-python
+tensorflow
+keras
+numpy
+pandas
+requests
+gdown
