@@ -4,7 +4,7 @@ from detector import detect_emotion_from_webcam
 import os
 
 app = Flask(__name__)
-CORS(app, supports_credentials=True, origins=["https://trelix-livid.vercel.app"])
+CORS(app, supports_credentials=True, origins=["https://trelix-livid.vercel.app", "http://localhost:5173"])
 
 # Set this to True when deploying to Render
 os.environ['IS_SERVER'] = 'True'
